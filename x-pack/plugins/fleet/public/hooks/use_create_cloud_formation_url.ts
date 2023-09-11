@@ -12,7 +12,7 @@ import type {
   CloudSecurityIntegrationAwsAccountType,
 } from '../components/agent_enrollment_flyout/types';
 
-import { useKibanaVersion } from './use_kibana_version';
+import { useAvailableAgentVersion } from './use_available_agent_version';
 import { useGetSettings } from './use_request';
 
 const CLOUD_FORMATION_DEFAULT_ACCOUNT_TYPE = 'single-account';
@@ -25,8 +25,7 @@ export const useCreateCloudFormationUrl = ({
   cloudFormationProps: CloudFormationProps | undefined;
 }) => {
   const { data, isLoading } = useGetSettings();
-
-  const kibanaVersion = useKibanaVersion();
+  const agentVersion = useAvailableAgentVersion();
 
   let isError = false;
   let error: string | undefined;
@@ -54,7 +53,7 @@ export const useCreateCloudFormationUrl = ({
           cloudFormationProps?.templateUrl,
           enrollmentAPIKey,
           fleetServerHost,
-          kibanaVersion,
+          agentVersion,
           cloudFormationProps?.awsAccountType
         )
       : undefined;
