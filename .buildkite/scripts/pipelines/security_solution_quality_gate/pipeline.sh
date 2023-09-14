@@ -24,10 +24,8 @@ echo "TEST EXECUTION"
 echo "--------------------"
 
 source .buildkite/scripts/common/util.sh
-.buildkite/scripts/bootstrap.sh
-npm install -g @reportportal/agent-js-cypress
-
 source .buildkite/scripts/steps/functional/common_cypress.sh
+.buildkite/scripts/bootstrap.sh
 
 echo "--- Serverless Security Solution Cypress tests (Chrome)"
 cd x-pack/test/security_solution_cypress
